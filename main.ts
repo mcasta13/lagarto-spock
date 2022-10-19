@@ -4,15 +4,21 @@ radio.onReceivedNumber(function (receivedNumber) {
 })
 input.onButtonPressed(Button.A, function () {
     cuento = cuento + 1
-    mimano = cuento % 3
-    if (mimano == 1) {
+    mimano = cuento % 5
+    if (mimano == 0) {
         basic.showIcon(IconNames.SmallSquare)
     }
-    if (mimano == 2) {
+    if (mimano == 1) {
         basic.showIcon(IconNames.Square)
     }
-    if (mimano == 0) {
+    if (mimano == 2) {
         basic.showIcon(IconNames.Scissors)
+    }
+    if (mimano == 3) {
+        basic.showIcon(IconNames.Duck)
+    }
+    if (mimano == 4) {
+        basic.showIcon(IconNames.Ghost)
     }
 })
 input.onButtonPressed(Button.B, function () {
@@ -34,17 +40,25 @@ basic.forever(function () {
         if (manooponente == mimano) {
             basic.showIcon(IconNames.No)
         } else {
-            if (manooponente == 1 && mimano == 2) {
+            if (mimano == 0 && (manooponente == 2 || manooponente == 3)) {
                 basic.showIcon(IconNames.Happy)
-            } else if (manooponente == 1 && mimano == 0) {
+            } else if (mimano == 0 && (manooponente == 1 || manooponente == 4)) {
                 basic.showIcon(IconNames.Skull)
-            } else if (manooponente == 2 && mimano == 1) {
+            } else if (mimano == 1 && (manooponente == 0 || manooponente == 4)) {
+                basic.showIcon(IconNames.Happy)
+            } else if (mimano == 1 && (manooponente == 1 || manooponente == 3)) {
                 basic.showIcon(IconNames.Skull)
-            } else if (manooponente == 2 && mimano == 0) {
+            } else if (mimano == 2 && (manooponente == 1 || manooponente == 3)) {
                 basic.showIcon(IconNames.Happy)
-            } else if (manooponente == 0 && mimano == 1) {
+            } else if (mimano == 2 && (manooponente == 0 || manooponente == 4)) {
+                basic.showIcon(IconNames.Skull)
+            } else if (mimano == 3 && (manooponente == 1 || manooponente == 4)) {
                 basic.showIcon(IconNames.Happy)
-            } else if (manooponente == 0 && mimano == 2) {
+            } else if (mimano == 3 && (manooponente == 0 || manooponente == 3)) {
+                basic.showIcon(IconNames.Skull)
+            } else if (mimano == 4 && (manooponente == 0 || manooponente == 2)) {
+                basic.showIcon(IconNames.Happy)
+            } else if (mimano == 4 && (manooponente == 1 || manooponente == 4)) {
                 basic.showIcon(IconNames.Skull)
             }
         }
